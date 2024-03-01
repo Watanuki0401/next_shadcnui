@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  node_server:
+    # image: node:21.6.2-bullseye
+    build: 
+      context: .
+      dockerfile: dockerfile
+    container_name: nextjs_uidemo
+    working_dir: /app
+    volumes:
+      - type: bind
+        source: ./app
+        target: /app
+      # - type: bind
+      #   source: /var/run/docker.sock
+      #   target: /var/run/docker.sock
+    ports:
+      - "3180:3000"
+    # environment:
+    #   - NODE_ENV=development
+    tty: true
+    
