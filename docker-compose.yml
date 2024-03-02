@@ -7,6 +7,7 @@ services:
       context: .
       dockerfile: dockerfile
     container_name: nextjs_uidemo
+    user: node
     working_dir: /app
     volumes:
       - type: bind
@@ -17,7 +18,5 @@ services:
       #   target: /var/run/docker.sock
     ports:
       - "3180:3000"
-    # environment:
-    #   - NODE_ENV=development
     tty: true
     
