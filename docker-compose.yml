@@ -5,7 +5,7 @@ services:
     # image: node:21.6.2-bullseye
     build: 
       context: .
-      dockerfile: dockerfile
+      dockerfile: dockerfileFront
     container_name: nextjs_uidemo
     user: node
     working_dir: /app
@@ -19,4 +19,19 @@ services:
     ports:
       - "3180:3000"
     tty: true
-    
+  
+  node_api_server:
+    build:
+      context: .
+      dockerfile: dockerfileBack
+    container_name: express_apiserver
+    user: node
+    working_dir: /app
+    volumes:
+      - type: bind
+        source: ./api
+        target: /app
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+    tty: true

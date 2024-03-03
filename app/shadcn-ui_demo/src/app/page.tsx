@@ -8,7 +8,7 @@ export default function Home() {
       <div className="flex w-full justify-center">
         <div className="w-[53rem] py-5">
           <Alert>
-            <Pin />
+            <Pin/>
             <AlertTitle>NOTIFICATION</AlertTitle>
             <AlertDescription>
               このページは現在、Next.jsの勉強用に構築されておりレイアウトが崩れている可能性があります。

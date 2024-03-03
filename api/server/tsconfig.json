@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./.express",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true                                /* Skip type checking all .d.ts files. */
+  },
+  "include": ["src/**/*"]
+}
