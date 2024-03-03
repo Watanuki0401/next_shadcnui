@@ -10,5 +10,5 @@ $ docker compose up -d
 $ docker exec -it nextjs_uidemo bash
 
 ```
-node ユーザでデフォルトログインにしているため
-root　ユーザとして入りたい時は`docker exec -u root -i nextjs_uidemo bash`とすること。
+node ユーザでデフォルトログインにしているため  
+rootユーザとして入りたい時は`docker exec -u root -i nextjs_uidemo bash`とすること。
