@@ -14,7 +14,6 @@ app.get('/dockerps', (req: Request, res: Response) => {
             console.log(`stderr: ${stderr}`);
             return;
         }
-        console.log(stdout);
         res.send(stdout);
     });
 });
