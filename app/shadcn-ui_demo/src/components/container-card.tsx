@@ -1,25 +1,30 @@
 import { ContainerInfo } from "@/lib/types";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card"
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "./ui/card";
 
 interface containerInfomationProps {
     ContainerDetails: ContainerInfo;
+    onSelect: () => void;
 }
 
-const ContainerCard = ({ ContainerDetails }: containerInfomationProps) => {
-
+const ContainerCard = ({ ContainerDetails, onSelect }: containerInfomationProps) => {
     const { Names, Image, Status } = ContainerDetails;
 
-    return(
-        <Card>
+    return (
+        <Card onSelect={onSelect}>
             <CardHeader>
                 <CardTitle>{Names}</CardTitle>
                 <CardDescription>{Image}</CardDescription>
             </CardHeader>
-            <CardFooter>
-                {Status}
-            </CardFooter>
+            <CardFooter>{Status}</CardFooter>
         </Card>
-    )
-}
+    );
+};
 
 export default ContainerCard;
