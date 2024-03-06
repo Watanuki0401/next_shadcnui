@@ -17,7 +17,7 @@ const ContainerCard = ({ ContainerDetails, onSelect }: containerInfomationProps)
     const { Names, Image, Status } = ContainerDetails;
 
     return (
-        <Card onSelect={onSelect}>
+        <Card onClick={onSelect}>
             <CardHeader>
                 <CardTitle>{Names}</CardTitle>
                 <CardDescription>{Image}</CardDescription>

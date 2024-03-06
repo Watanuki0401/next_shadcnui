@@ -1,30 +1,23 @@
+"use client";
+
+import getContainerList from "@/actions/get-container-list";
 import ContainerCard from "@/components/container-card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ContainerInfo } from "@/lib/types";
 import { atom, useAtom } from "jotai";
-
+import { useEffect, useState } from "react";
 
 const selectedContainerAtom = atom<ContainerInfo | null>(null);
 
-async function getContainerList() {
-    try {
-        const responce = await fetch("http://express_apiserver:3000/dockerps");
 
-        if (!responce.ok) {
-            throw new Error(`API Server is stopping now. (&{reaponse.Status})`);
-        }
 
-        const ContainerListData: ContainerInfo[] = await responce.json();
-        return ContainerListData;
-    } catch (Error) {
-        const ContainerListData: ContainerInfo[] = [];
-        return ContainerListData;
-    }
-}
-
-export default async function Page() {
-    const ContainerListData = await getContainerList();
+export default function Page() {
+    const [ContainerListData, setContainerListData] = useState<ContainerInfo[]>([]);
     const [selectedContainer, setSelectedContainer] = useAtom(selectedContainerAtom);
+
+    useEffect(() => {
+        getContainerList().then((data) => setContainerListData(data));
+    }, []);
 
     console.log(ContainerListData.length);
 
@@ -43,7 +36,11 @@ export default async function Page() {
                                         <ContainerCard
                                             key={ContainerDetails.ID}
                                             ContainerDetails={ContainerDetails}
-                                            onSelect={() => setSelectedContainer(ContainerDetails)}
+                                            onSelect={() =>
+                                                setSelectedContainer(
+                                                    ContainerDetails
+                                                )
+                                            }
                                         />
                                     )
                                 )
@@ -58,7 +55,9 @@ export default async function Page() {
                         {selectedContainer ? (
                             <p>{selectedContainer.Names}</p>
                         ) : (
-                        <p className="text-center py-[40%]">Not Selected.</p>
+                            <p className="text-center py-[40%]">
+                                Not Selected.
+                            </p>
                         )}
                     </div>
                 </div>
